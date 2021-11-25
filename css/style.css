@@ -23,6 +23,10 @@
   position: absolute;
 }
 
+.none {
+  display: none;
+}
+
 .container-img-grande {
   height: 430px;
 }
