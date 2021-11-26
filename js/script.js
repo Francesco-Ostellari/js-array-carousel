@@ -41,16 +41,90 @@ const text = [
 
 
 
-// const itemsGrande = document.querySelector('.container-img-grande  .img-grande');
-// const containerMiniature = document.querySelector('.container-miniature  .icona');
+const itemsGrande = document.querySelector('.container-img-grande');
+const imgGrande = document.querySelector (".img-grande");
+const containerMiniature = document.querySelector('.container-miniature');
 
-// for (let index = 0; index < items.length; index++) {
-//   let img = `<img src="${items[index]}" alt="">`;
-//   let icona = `<div class="miniatura-5 prev icona relative"></div>`;
-//   icona = `<div class="miniatura-1 next able active icona relative"></div>`;
-//   itemsGrande.innerHTML += img;
-//   containerMiniature.innerHTML += icona;
-// }
+
+/*
+IMMAGINI GROSSE
+FOR ciclo tutto l'array
+  - metto l'immagine
+SE sono al primo ciclo -> calsse active
+*/
+
+let img;
+
+for (let index = 0; index < items.length; index++) {
+  let img = `<img src="${items[index]}" alt="">`;
+  if (index==0) {
+    img = `<img class="active" src="${items[index]}" alt="">`;
+  }
+  console.log (img);
+  imgGrande.innerHTML += img;
+}
+
+let arrow = `<i class="fas fa-chevron-circle-up"></i>`;
+let arrowDown = `<i class=" fas fa-chevron-circle-up"></i>`;
+
+/* IMMAGINI PICCOLE
+FOR ciclo tutto l'array
+- creare contenitore createElement
+- assegno la classe elemento.classList.add("miniatura-"+(index+1))
+- ci mettimao dentro l'immagine
+SE primo ciclo-> metto freccia
+SE ultimo ciclo-> metto freccia
+*/
+
+for (let index = 0; index < items.length; index++) {
+  let miniature = document.createElement("div");
+  miniature.classList.add ("miniatura-"+(index+1));
+  console.log(miniature);
+
+  let img = `<img class="active" src="${items[index]}" alt="">`;
+  miniature.append(img);
+  if (index==0) {
+    let arrow = `<i class="fas fa-chevron-circle-up"></i>`;
+    miniature.append(arrow);
+    console.log(arrow);
+  } else if (index==4) {
+    let arrowDown = `<i class=" fas fa-chevron-circle-up"></i>`;
+    miniature.append(arrowDown);
+    console.log (arrowDown);
+  }
+  console.log (img);
+  // containerMiniature.innerHTML += miniature;
+}
+
+/*
+Clicco su icona next
+- togli la classe active all'immagine che ha classe active
+- all'immagine successiva vado a mettere la classe active
+*/
+
+
+
+/*
+Clicco su icona prev
+- tolge la classe active all'immagine che ha classe active
+- all'immagine precedente vado a mettere la classe active
+*/
+
+/* 
+for (let index = 0; index < items.length; index++) {
+  let img = `<img src="${items[index]}" alt="">`;
+  if(index==0){
+    //immagine grande active
+    img = `<img class="active" src="${items[index]}" alt="">`;
+    let icona = `<div class="miniatura-5 prev icona relative"></div>`;
+  }
+  icona += `<div class="miniatura-1 next able active icona relative"></div>`;
+  //inserisco immagini grande
+  itemsGrande.innerHTML += img;
+  //inserendo immagini piccole
+  containerMiniature.innerHTML += img;
+  containerMiniature.innerHTML += icona;
+} */
 
 // const itemsDom = document.querySelectorAll('.container-img-grande img');
 // console.log(itemsDom);

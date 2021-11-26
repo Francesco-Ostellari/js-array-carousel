@@ -23,8 +23,8 @@
   position: absolute;
 }
 
-.none {
-  display: none;
+.img-grande img.active {
+  display: block;
 }
 
 .container-img-grande {
@@ -34,6 +34,7 @@
 .img-grande img {
   width: 1000px;
   height: 100%;
+  display: none;
 }
 
 .img-grande .text {
@@ -73,3 +74,4 @@
 .fa-chevron-circle-down {
   bottom: 10px;
 }
+
