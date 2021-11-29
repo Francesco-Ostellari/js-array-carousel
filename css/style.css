@@ -75,3 +75,10 @@
   bottom: 10px;
 }
 
+.container-miniature div {
+  position: relative;
+}
+
+.none {
+  display: none;
+}

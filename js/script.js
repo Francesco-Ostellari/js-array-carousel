@@ -53,8 +53,6 @@ FOR ciclo tutto l'array
 SE sono al primo ciclo -> calsse active
 */
 
-let img;
-
 for (let index = 0; index < items.length; index++) {
   let img = `<img src="${items[index]}" alt="">`;
   if (index==0) {
@@ -63,9 +61,6 @@ for (let index = 0; index < items.length; index++) {
   console.log (img);
   imgGrande.innerHTML += img;
 }
-
-let arrow = `<i class="fas fa-chevron-circle-up"></i>`;
-let arrowDown = `<i class=" fas fa-chevron-circle-up"></i>`;
 
 /* IMMAGINI PICCOLE
 FOR ciclo tutto l'array
@@ -82,18 +77,18 @@ for (let index = 0; index < items.length; index++) {
   console.log(miniature);
 
   let img = `<img class="active" src="${items[index]}" alt="">`;
-  miniature.append(img);
+  miniature.innerHTML += img;
   if (index==0) {
-    let arrow = `<i class="fas fa-chevron-circle-up"></i>`;
-    miniature.append(arrow);
+    let arrow = `<i class="fas fa-chevron-circle-up able absolute"></i>`;
+    miniature.innerHTML += arrow;
     console.log(arrow);
-  } else if (index==4) {
-    let arrowDown = `<i class=" fas fa-chevron-circle-up"></i>`;
-    miniature.append(arrowDown);
+  } else if (index== items.length -1) {
+    let arrowDown = `<i class=" fas fa-chevron-circle-down able absolute"></i>`;
+    miniature.innerHTML+=arrowDown;
     console.log (arrowDown);
   }
   console.log (img);
-  // containerMiniature.innerHTML += miniature;
+  containerMiniature.appendChild (miniature);
 }
 
 /*
@@ -102,6 +97,26 @@ Clicco su icona next
 - all'immagine successiva vado a mettere la classe active
 */
 
+const nextButton = document.querySelector('.fa-chevron-circle-down');
+
+nextButton.addEventListener('click', function () {
+  let last = false;
+  for (let index = 0; index < items.length; index++) {
+    console.log(index, items[index]);
+    if (items[index] == items.length -1) {
+      // la variabile diventa vera  
+      last = true;
+    }
+  }
+  if (last == false) { //se non sono in last
+    let imgNow = document.querySelector(".active");
+    imgNow.classList.remove('active');
+    const nextSibling = imgNow.nextElementSibling;
+    nextSibling.classList.add("active");
+  } else { // se sono in last
+    nextButton.classList.remove('able');
+  }
+});
 
 
 /*
@@ -109,6 +124,29 @@ Clicco su icona prev
 - tolge la classe active all'immagine che ha classe active
 - all'immagine precedente vado a mettere la classe active
 */
+const prevButton = document.querySelector('.fa-chevron-circle-up');
+
+prevButton.addEventListener('click', function () {
+
+  let last = false;
+  for (let index = 0; index < items.length; index++) {
+    console.log(index, items[index]);
+    if (items[index] == items.length - 1) {
+      // la variabile diventa vera  
+      last = true;
+    }
+  }
+  if (last == false) { //se non sono in last
+    let imgNowPrev = document.querySelector(".active");
+    imgNowPrev.classList.remove('active');
+    let prevSibling = imgNowPrev.previousElementSibling;
+    prevSibling.classList.add("active");
+  } else { // se sono in first
+    nextButton.classList.remove('able');
+  }
+
+});
+
 
 /* 
 for (let index = 0; index < items.length; index++) {
