@@ -54,12 +54,20 @@ SE sono al primo ciclo -> calsse active
 */
 
 for (let index = 0; index < items.length; index++) {
-  let img = `<img src="${items[index]}" alt="">`;
+  let div = `<div>
+                <img src="${items[index]}" alt="">
+                <h3>${title[index]}</h3>
+                <p>${text[index]}</p>
+              </div>`;
   if (index==0) {
-    img = `<img class="active" src="${items[index]}" alt="">`;
+    div = `<div class ="active">
+              <img src="${items[index]}" alt="">
+              <h3 class ="text absolute">${title[index]}</h3>
+              <p class="text absolute">${text[index]}</p>
+            </div>`;
   }
-  console.log (img);
-  imgGrande.innerHTML += img;
+  console.log (div);
+  imgGrande.innerHTML += div;
 }
 
 /* IMMAGINI PICCOLE

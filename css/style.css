@@ -23,7 +23,7 @@
   position: absolute;
 }
 
-.img-grande img.active {
+.img-grande div.active {
   display: block;
 }
 
