@@ -54,16 +54,20 @@ SE sono al primo ciclo -> calsse active
 */
 
 for (let index = 0; index < items.length; index++) {
-  let div = `<div>
+  let div = `<div class="none">
                 <img src="${items[index]}" alt="">
-                <h3>${title[index]}</h3>
-                <p>${text[index]}</p>
+                <div class="text absolute">
+                  <h3>${title[index]}</h3>
+                  <p>${text[index]}</p>
+                </div>
               </div>`;
   if (index==0) {
-    div = `<div class ="active">
+    div = `<div class ="none active">
               <img src="${items[index]}" alt="">
-              <h3 class ="text absolute">${title[index]}</h3>
-              <p class="text absolute">${text[index]}</p>
+              <div class="text absolute">
+                <h3>${title[index]}</h3>
+                <p>${text[index]}</p>
+              </div>
             </div>`;
   }
   console.log (div);
